@@ -27,6 +27,7 @@ const isFreelancer = (job) =>
 
 
   const [wallet, setWallet] = useState("");
+  const [role, setRole] = useState("");
   const [contract, setContract] = useState(null);
   const [jobs, setJobs] = useState([]);
 
@@ -340,17 +341,34 @@ async function releasePayment(jobId) {
 
       <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-xl">
 
-        <p className="text-center text-gray-600 mb-4">
+       <p className="text-center text-gray-600 mb-4">
 
-  {wallet.toLowerCase() ===
-  "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266".toLowerCase()
-
-    ? "Mode Employer"
-
-    : "Mode Freelancer"}
+  {role
+    ? `Mode ${role}`
+    : "Pilih Role"}
 
 </p>
+<div className="flex gap-4 mb-4 justify-center">
 
+  <button
+    onClick={() => setRole("employer")}
+    className="bg-blue-500 text-white px-4 py-2 rounded"
+  >
+    Employer
+  </button>
+
+  <button
+    onClick={() => setRole("freelancer")}
+    className="bg-purple-500 text-white px-4 py-2 rounded"
+  >
+    Freelancer
+  </button>
+
+</div>
+<div className="flex gap-4 mb-4 justify-center">
+
+
+</div>
         <button
           onClick={connectWallet}
           className="w-full bg-black text-white py-3 rounded-xl"
@@ -358,10 +376,7 @@ async function releasePayment(jobId) {
           Connect MetaMask
         </button>
 
-        {wallet &&
-wallet.toLowerCase() ===
-"0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266".toLowerCase()
-&& (
+        {role === "employer" && (
           <div className="mt-6">
 
             <div className="bg-gray-100 p-4 rounded-xl mb-4">
@@ -498,10 +513,7 @@ wallet.toLowerCase() ===
     </div>
 
   )}
-  {wallet &&
-wallet.toLowerCase() !==
-"0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266".toLowerCase()
-&& (
+ {role === "freelancer" && (
 
   <div className="bg-white shadow-xl rounded-2xl p-6 w-full max-w-xl mt-6">
 

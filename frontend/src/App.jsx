@@ -415,29 +415,43 @@ function App() {
           </div>
         </motion.div>
 
-        {/* ROLE SWITCH */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-white/5 border border-white/10 p-2 rounded-2xl flex gap-2 backdrop-blur-xl">
+      {/* ROLE SWITCH */}
+<div className="flex justify-center mb-8">
+  <div className="bg-white/5 border border-white/10 p-2 rounded-2xl flex gap-2 backdrop-blur-xl">
 
-            <button
-              onClick={() => setRole("employer")}
-              className={`px-6 py-3 rounded-xl transition-all duration-300 font-semibold ${
-                role === "employer"
-                  ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg"
-                  : "text-slate-400 hover:bg-white/5"
-              }`}
-            >
-              Employer
-            </button>
+    {/* EMPLOYER */}
+    <button
+      onClick={() => {
+        setRole("employer");
 
-            <button
-              onClick={() => setRole("freelancer")}
-              className={`px-6 py-3 rounded-xl transition-all duration-300 font-semibold ${
-                role === "freelancer"
-                  ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
-                  : "text-slate-400 hover:bg-white/5"
-              }`}
-            >
+        // RESET WALLET BIAR CONNECT ULANG
+        setWallet("");
+        setContract(null);
+      }}
+      className={`px-6 py-3 rounded-xl transition-all duration-300 font-semibold ${
+        role === "employer"
+          ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg"
+          : "text-slate-400 hover:bg-white/5"
+      }`}
+    >
+      Employer
+    </button>
+
+    {/* FREELANCER */}
+    <button
+      onClick={() => {
+        setRole("freelancer");
+
+        // RESET WALLET BIAR CONNECT ULANG
+        setWallet("");
+        setContract(null);
+      }}
+      className={`px-6 py-3 rounded-xl transition-all duration-300 font-semibold ${
+        role === "freelancer"
+          ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
+          : "text-slate-400 hover:bg-white/5"
+      }`}
+    >
               Freelancer
             </button>
           </div>
